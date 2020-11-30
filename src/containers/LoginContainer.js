@@ -72,7 +72,7 @@ export default class LoginContainer extends Component {
                 required
                 fullWidth
                 id="username"
-                label="username"
+                label="Username"
                 name="username"
                 autoComplete="username"
                 autoFocus

@@ -1,19 +1,27 @@
 import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
-import PieChart from "../charts/PieChart";
 
+import { connect } from "react-redux";
+import { getLoggingList } from "../actions/inventoryAction";
 
-export default class AnalitikInventoryContainer extends Component {
+import AnalitikComponent from "../components/AnalitikComponent"
+// import PieChart from "../charts/PieChart";
+
+class AnalitikContainer extends Component {
+  componentDidMount() {
+    this.props.dispatch(getLoggingList());
+  }
   render() {
     if (localStorage.getItem("token") == null) {
       return <Redirect to="/" />;
     } else {
       return (
         <div>
-          <h1> ANALITIK</h1>
-          <PieChart />
+          <AnalitikComponent />
         </div>
       );
     }
   }
 }
+
+export default connect()(AnalitikContainer);
