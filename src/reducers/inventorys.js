@@ -17,7 +17,7 @@ let initialState = {
   errorUserLogin: false,
   getLoggingList: false,
   errorLoggingList: false,
-  title: "BARANG INVENTORY PERPASIP",
+  title: "Pervasive",
   judul: "apa hayu",
 };
 

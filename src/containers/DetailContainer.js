@@ -1,22 +1,46 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import NavbarComponent from "../components/NavbarComponent";
 import BackComponent from "../components/BackComponent";
+import { Redirect } from "react-router-dom";
 import { connect } from "react-redux";
 import { getInventoryDetail } from "../actions/inventoryAction";
 import DetailComponent from "../components/DetailComponent";
 
 class DetailContainer extends Component {
+  constructor(props) {
+    super(props);
+    const token = localStorage.getItem("token");
+
+    let loggedin = true;
+    if (token == null) {
+      loggedin = false;
+    }
+
+    this.state = {
+      loggedin,
+    };
+  }
+
   componentDidMount() {
-    this.props.dispatch(getInventoryDetail(this.props.match.params.logical_uid));
+    this.props.dispatch(
+      getInventoryDetail(this.props.match.params.logical_uid)
+    );
   }
 
   render() {
+    if (this.state.loggedin === false) {
+      return <Redirect to="/" />;
+    }
     return (
-      <Container>
-        <BackComponent />
-        <h1>Detail Inventory</h1>
-        <DetailComponent />
-      </Container>
+      <div>
+        <NavbarComponent />
+        <Container>
+          <BackComponent />
+          <h1>Detail Inventory</h1>
+          <DetailComponent />
+        </Container>
+      </div>
     );
   }
 }

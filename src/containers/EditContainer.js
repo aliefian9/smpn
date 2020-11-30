@@ -1,9 +1,14 @@
+import BackComponent from "../components/BackComponent";
+import NavbarComponent from "../components/NavbarComponent";
+
 import React, { Component } from "react";
 import { Container } from "reactstrap";
-import BackComponent from "../components/BackComponent";
 import { connect } from "react-redux";
 import FormComponent from "../components/FormComponent";
-import { getInventoryDetail, putInventoryUpdate } from "../actions/inventoryAction";
+import {
+  getInventoryDetail,
+  putInventoryUpdate,
+} from "../actions/inventoryAction";
 import swal from "sweetalert";
 
 const mapStateToProps = (state) => {
@@ -23,7 +28,10 @@ class EditContainer extends Component {
   }
 
   render() {
-    if (this.props.getResponDataInventory || this.props.errorResponDataInventory) {
+    if (
+      this.props.getResponDataInventory ||
+      this.props.errorResponDataInventory
+    ) {
       if (this.props.errorResponDataInventory) {
         swal("Failed!", this.props.errorResponDataInventory, "error");
       } else {
@@ -38,11 +46,14 @@ class EditContainer extends Component {
       }
     }
     return (
-      <Container>
-        <BackComponent />
-        <h1>Edit Inventory</h1>
-        <FormComponent onSubmit={(data) => this.handleSubmit(data)} />
-      </Container>
+      <div>
+        <NavbarComponent />
+        <Container>
+          <BackComponent />
+          <h1>Edit Inventory</h1>
+          <FormComponent onSubmit={(data) => this.handleSubmit(data)} />
+        </Container>
+      </div>
     );
   }
 }

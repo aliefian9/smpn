@@ -13,6 +13,7 @@ let header = {
   }
 }
 
+//MUNCULIN LIST DATA INVENTORY
 export const getInventoryList = () => {
   return (dispatch) => {
     axios
@@ -38,7 +39,7 @@ export const getInventoryList = () => {
   };
 };
 
-
+//MUNCULIN LIST DATA LOGGING IN ATAU OUT
 export const getLoggingList = () => {
   return (dispatch) => {
     axios
@@ -64,7 +65,7 @@ export const getLoggingList = () => {
   };
 };
 
-
+//BUAT DETAIL DATA 1 INVENTORY
 export const getInventoryDetail = (logical_uid) => {
   return (dispatch) => {
     axios

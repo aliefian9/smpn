@@ -30,6 +30,20 @@ const useStyles = makeStyles((theme) => ({
 }));
 
 export default class LoginContainer extends Component {
+  constructor(props) {
+    super(props);
+    const token = localStorage.getItem("token");
+
+    let loggedin = true;
+    if (token == null) {
+      loggedin = false;
+    }
+
+    this.state = {
+      loggedin,
+    };
+  }
+
   handleSubmit = (e) => {
     e.preventDefault();
     const data = {
@@ -53,55 +67,49 @@ export default class LoginContainer extends Component {
   };
 
   render() {
-    if (localStorage.getItem("token") != null) {
+    if (this.state.loggedin) {
       return <Redirect to="/Home" />;
-    } else {
-      return (
-        <Container component="main" maxWidth="xs">
-          <CssBaseline />
-          <div className={useStyles.paper}>
-            <div className="text-center">
-              <Typography component="h1" variant="h5">
-                Sign in
-              </Typography>
-            </div>
-            <form className={useStyles.form} onSubmit={this.handleSubmit}>
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                id="username"
-                label="Username"
-                name="username"
-                autoComplete="username"
-                autoFocus
-                onChange={(e) => (this.username = e.target.value)}
-              />
-              <TextField
-                variant="outlined"
-                margin="normal"
-                required
-                fullWidth
-                name="password"
-                label="Password"
-                type="password"
-                id="password"
-                autoComplete="current-password"
-                onChange={(e) => (this.password = e.target.value)}
-              />
-              <Button
-                type="submit"
-                fullWidth
-                variant="contained"
-                color="primary"
-              >
-                Sign In
-              </Button>
-            </form>
-          </div>
-        </Container>
-      );
     }
+    return (
+      <Container component="main" maxWidth="xs">
+        <CssBaseline />
+        <div className={useStyles.paper}>
+          <div className="text-center">
+            <Typography component="h1" variant="h5">
+              Sign in
+            </Typography>
+          </div>
+          <form className={useStyles.form} onSubmit={this.handleSubmit}>
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              id="username"
+              label="Username"
+              name="username"
+              autoComplete="username"
+              autoFocus
+              onChange={(e) => (this.username = e.target.value)}
+            />
+            <TextField
+              variant="outlined"
+              margin="normal"
+              required
+              fullWidth
+              name="password"
+              label="Password"
+              type="password"
+              id="password"
+              autoComplete="current-password"
+              onChange={(e) => (this.password = e.target.value)}
+            />
+            <Button type="submit" fullWidth variant="contained" color="primary">
+              Sign In
+            </Button>
+          </form>
+        </div>
+      </Container>
+    );
   }
 }

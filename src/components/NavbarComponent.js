@@ -55,7 +55,7 @@ const NavbarComponent = (props) => {
                   <DropdownItem divider />
                   <DropdownItem>About</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem href="/Logout">Logout</DropdownItem>
+                  <DropdownItem href="/xhasjahw1">Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </NavbarText>
