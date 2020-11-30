@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import { Redirect } from "react-router-dom";
 import BackComponent from "../components/BackComponent";
 import FormComponent from "../components/FormComponent";
 import NavbarComponent from "../components/NavbarComponent";
@@ -15,6 +16,19 @@ const mapStateToProps = (state) => {
 };
 
 class CreateContainer extends Component {
+  constructor(props) {
+    super(props);
+    const token = localStorage.getItem("token");
+
+    let loggedin = true;
+    if (token == null) {
+      loggedin = false;
+    }
+
+    this.state = {
+      loggedin,
+    };
+  }
   handleSubmit(data) {
     this.props.dispatch(postInventoryCreate(data));
   }
@@ -36,6 +50,9 @@ class CreateContainer extends Component {
           "success"
         );
       }
+    }
+    if (this.state.loggedin === false) {
+      return <Redirect to="/" />;
     }
     return (
       <div>

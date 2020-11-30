@@ -81,13 +81,13 @@ const TableComponent = (props) => {
       formatter: (rowContent, row) => {
         return (
           <div>
-            <Link to={"detail/" + row.logical_uid}>
+            <Link to={"Detail/" + row.logical_uid}>
               <Button color="dark" className="mr-2">
                 <FontAwesomeIcon icon={faInfo} /> Detail
               </Button>
             </Link>
 
-            <Link to={"edit/" + row.logical_uid}>
+            <Link to={"Edit/" + row.logical_uid}>
               <Button color="dark" className="mr-2">
                 <FontAwesomeIcon icon={faEdit} /> Edit
               </Button>
@@ -121,7 +121,7 @@ const TableComponent = (props) => {
             <div>
               <Row>
                 <Col>
-                  <Link to="/create">
+                  <Link to="/Create">
                     <Button color="dark" className="mr-2">
                       <FontAwesomeIcon icon={faPlus} /> Create
                     </Button>

@@ -1,11 +1,11 @@
 import React, { Component } from "react";
-import { Redirect } from "react-router-dom";
 
 export default class my404 extends Component {
   render() {
     return (
       <div>
-        <Redirect to="/"></Redirect>
+        <h1>HALAMAN YANG KAMU CARI SALAH</h1>
+        <a href="/">Kembali Ke Homepage</a>
       </div>
     );
   }

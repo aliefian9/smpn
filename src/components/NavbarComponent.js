@@ -16,17 +16,10 @@ import {
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser } from "@fortawesome/free-solid-svg-icons";
 
-
 const NavbarComponent = (props) => {
   const [isOpen, setIsOpen] = useState(false);
 
   const toggle = () => setIsOpen(!isOpen);
-
-
-  // const state = {
-  //   logout: localStorage.removeItem("token"),
-  //  };
-
 
   return (
     <div>

@@ -1,6 +1,6 @@
 import BackComponent from "../components/BackComponent";
 import NavbarComponent from "../components/NavbarComponent";
-
+import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import { connect } from "react-redux";
@@ -19,6 +19,19 @@ const mapStateToProps = (state) => {
 };
 
 class EditContainer extends Component {
+  constructor(props) {
+    super(props);
+    const token = localStorage.getItem("token");
+
+    let loggedin = true;
+    if (token == null) {
+      loggedin = false;
+    }
+
+    this.state = {
+      loggedin,
+    };
+  }
   componentDidMount() {
     this.props.dispatch(getInventoryDetail(this.props.match.params.id));
   }
@@ -44,6 +57,10 @@ class EditContainer extends Component {
           "success"
         );
       }
+    }
+
+    if (this.state.loggedin === false) {
+      return <Redirect to="/" />;
     }
     return (
       <div>
