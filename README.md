@@ -1,8 +1,3 @@
-----------UPDATE----------
-30 NOV 2020 - 20:51 = BISA LOGIN,LOGOUT DAN REDIRECT JIKA SALAH LINK ATAU SUDAH LOGOUT PAS PENCET BACK REDIRECT KE LOGIN
-
-
-
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
