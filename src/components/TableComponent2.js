@@ -2,38 +2,13 @@ import React from "react";
 import BootstrapTable from "react-bootstrap-table-next";
 import { Container, Button, Row, Col, Spinner } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faInfo,
-  faEdit,
-  faTrash,
-  faPlus,
-} from "@fortawesome/free-solid-svg-icons";
+import { faInfo } from "@fortawesome/free-solid-svg-icons";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 import paginationFactory from "react-bootstrap-table2-paginator";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import swal from "sweetalert";
-import { deleteInventory } from "../actions/inventoryAction";
 
 const { SearchBar } = Search;
-
-const handleClick = (dispatch, logical_uid) => {
-  swal({
-    title: "Apakah Anda yakin akan menghapus data ini ?",
-    icon: "warning",
-    buttons: true,
-    dangerMode: true,
-  }).then((willDelete) => {
-    if (willDelete) {
-      dispatch(deleteInventory(logical_uid));
-      swal("Data Inventoruy Sukses dihapus", {
-        icon: "success",
-      });
-    } else {
-      swal("Data gagal dihapus");
-    }
-  });
-};
 
 const defaultSorted = [
   {
@@ -49,7 +24,7 @@ const mapStateToProps = (state) => {
   };
 };
 
-const TableComponent = (props) => {
+const TableComponent2 = (props) => {
   const columns = [
     {
       dataField: "logical_uid",
@@ -76,7 +51,7 @@ const TableComponent = (props) => {
       dataField: "link",
       text: "Action",
       headerStyle: () => {
-        return { width: "30%" };
+        return { width: "15%" };
       },
       formatter: (rowContent, row) => {
         return (
@@ -86,20 +61,6 @@ const TableComponent = (props) => {
                 <FontAwesomeIcon icon={faInfo} /> Detail
               </Button>
             </Link>
-
-            <Link to={"Edit/" + row.logical_uid}>
-              <Button color="dark" className="mr-2">
-                <FontAwesomeIcon icon={faEdit} /> Edit
-              </Button>
-            </Link>
-
-            <Button
-              color="dark"
-              className="mr-2"
-              onClick={() => handleClick(props.dispatch, row.logical_uid)}
-            >
-              <FontAwesomeIcon icon={faTrash} /> Delete
-            </Button>
           </div>
         );
       },
@@ -116,18 +77,10 @@ const TableComponent = (props) => {
           columns={columns}
           defaultSorted={defaultSorted}
           search
-          noDataIndication="Table is Empty"
         >
           {(props) => (
             <div>
               <Row>
-                <Col>
-                  <Link to="/Create">
-                    <Button color="dark" className="mr-2">
-                      <FontAwesomeIcon icon={faPlus} /> Create
-                    </Button>
-                  </Link>
-                </Col>
                 <Col>
                   <div className="float-right">
                     <SearchBar {...props.searchProps} placeholder="Search .." />
@@ -155,4 +108,4 @@ const TableComponent = (props) => {
   );
 };
 
-export default connect(mapStateToProps, null)(TableComponent);
+export default connect(mapStateToProps, null)(TableComponent2);

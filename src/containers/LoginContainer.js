@@ -55,6 +55,7 @@ export default class LoginContainer extends Component {
       .post("https://smpnapi.herokuapp.com/token-auth/", data)
       .then((res) => {
         localStorage.setItem("token", res.data.token);
+        localStorage.setItem("roleuser1", res.data.user.user_permissions);
         this.setState({
           loggedin: true,
         });
