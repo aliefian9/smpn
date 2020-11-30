@@ -63,7 +63,7 @@ class FormComponent extends Component {
             <FormGroup>
               <Field
                 type="text"
-                name="alamat"
+                name="jumlah"
                 component={renderField}
                 label="Jumlah :"
               />

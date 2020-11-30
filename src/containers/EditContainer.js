@@ -33,11 +33,15 @@ class EditContainer extends Component {
     };
   }
   componentDidMount() {
-    this.props.dispatch(getInventoryDetail(this.props.match.params.id));
+    this.props.dispatch(
+      getInventoryDetail(this.props.match.params.logical_uid)
+    );
   }
 
   handleSubmit(data) {
-    this.props.dispatch(putInventoryUpdate(data, this.props.match.params.id));
+    this.props.dispatch(
+      putInventoryUpdate(data, this.props.match.params.logical_uid)
+    );
   }
 
   render() {

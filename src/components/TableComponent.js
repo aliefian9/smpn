@@ -111,7 +111,7 @@ const TableComponent = (props) => {
       {props.getInventoryList ? (
         <ToolkitProvider
           bootstrap4
-          keyField="id"
+          keyField="logical_uid"
           data={props.getInventoryList}
           columns={columns}
           defaultSorted={defaultSorted}
