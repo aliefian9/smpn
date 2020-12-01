@@ -17,6 +17,7 @@ let initialState = {
   errorUserLogin: false,
   getLoggingList: false,
   errorLoggingList: false,
+  hitungLogging: false,
   title: "Pervasive",
   judul: "apa hayu",
 };

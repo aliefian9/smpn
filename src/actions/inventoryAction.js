@@ -122,7 +122,7 @@ export const postInventoryCreate = (data) => {
 export const deleteInventory = (logical_uid) => {
   return (dispatch) => {
     axios
-      .delete(url + 'inventory/' + logical_uid, header)
+      .delete(url + 'inventory/delete/' + logical_uid, header)
       .then(function (response) {
         console.log(response);
       })
@@ -155,14 +155,14 @@ export const deleteDataInventory = () => {
 export const putInventoryUpdate = (data, id) => {
   return (dispatch) => {
     axios
-      .put(url + 'inventory/' + id, data, header)
+      .put(url + 'inventory/update/' + id, data, header)
       .then(function (response) {
         console.log(response);
 
         dispatch({
           type: PUT_INVENTORY_EDIT,
           payload: {
-            data: response.data,
+            data: response.data.inventory,
             errorMessage: false,
           },
         });

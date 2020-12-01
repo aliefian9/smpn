@@ -6,7 +6,7 @@ import CreateContainer from "./containers/CreateContainer";
 import EditContainer from "./containers/EditContainer";
 import DetailContainer from "./containers/DetailContainer";
 import DataContainer from "./containers/DataContainer";
-
+import ProfilContainer from "./containers/ProfilContainer";
 import LoginContainer from "./containers/LoginContainer";
 import AnalitikContainer from "./containers/AnalitikContainer";
 import xhasjahw1 from "./containers/Logout";
@@ -35,6 +35,7 @@ class App extends Component {
             <Route path="/Edit/:logical_uid" exact component={EditContainer} />
             <Route path="/Data" exact component={DataContainer} />
             <Route path="/Analitik" exact component={AnalitikContainer} />
+            <Route path="/Profil" exact component={ProfilContainer} />
             <Route path="/xhasjahw1" exact component={xhasjahw1} />
             <Route path="*" exact component={my404} />
           </Switch>

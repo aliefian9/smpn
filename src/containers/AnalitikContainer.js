@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import { getLoggingList } from "../actions/inventoryAction";
 
 import AnalitikComponent from "../components/AnalitikComponent";
+// import CounterAnalitik from "../components/CounterAnalitik";
 import NavbarComponent from "../components/NavbarComponent";
 // import PieChart from "../charts/PieChart";
 
@@ -33,6 +34,7 @@ class AnalitikContainer extends Component {
       <div>
         <NavbarComponent />
         <AnalitikComponent />
+        {/* <CounterAnalitik /> */}
       </div>
     );
   }

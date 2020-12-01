@@ -4,8 +4,17 @@ import paginationFactory from "react-bootstrap-table2-paginator";
 import ToolkitProvider, { Search } from "react-bootstrap-table2-toolkit";
 
 import { Container, Row, Col, Spinner } from "reactstrap";
+import { Card } from "react-bootstrap";
 
 import { connect } from "react-redux";
+var today = new Date(),
+  date =
+    today.getDate() +
+    " - " +
+    (today.getMonth() + 1) +
+    " - " +
+    today.getFullYear(),
+  time = today.getHours() + " : " + today.getUTCMinutes();
 
 const { SearchBar } = Search;
 const defaultSorted = [
@@ -19,14 +28,15 @@ const mapStateToProps = (state) => {
   return {
     getLoggingList: state.inventorys.getLoggingList,
     errorLoggingList: state.inventorys.errorLoggingList,
+    HitungLogging: state.inventorys.getLoggingList.length, //HITUNG JUMLAH DATA LOGGING
   };
 };
 
 const AnalitikComponent = (props) => {
   const columns = [
     {
-      dataField: "logical_uid",
-      text: "Logical UID",
+      dataField: "id",
+      text: "id",
       sort: true,
       headerStyle: () => {
         return { width: "15%" };
@@ -51,30 +61,40 @@ const AnalitikComponent = (props) => {
   return (
     <Container>
       {props.getLoggingList ? (
-        <ToolkitProvider
-          bootstrap4
-          keyField="logical_uid"
-          data={props.getLoggingList}
-          columns={columns}
-          defaultSorted={defaultSorted}
-          search
-        >
-          {(props) => (
-            <div>
-              <Row>
-                <Col>
-                  <div className="float-right">
-                    <SearchBar {...props.searchProps} placeholder="Cari.." />
-                  </div>
-                </Col>
-              </Row>
-              <BootstrapTable
-                {...props.baseProps}
-                pagination={paginationFactory()}
-              />
-            </div>
-          )}
-        </ToolkitProvider>
+        <div>
+          <ToolkitProvider
+            bootstrap4
+            keyField="id"
+            data={props.getLoggingList}
+            columns={columns}
+            defaultSorted={defaultSorted}
+            search
+          >
+            {(props) => (
+              <div>
+                <Row>
+                  <Col>
+                    <div className="float-right">
+                      <SearchBar {...props.searchProps} placeholder="Cari.." />
+                    </div>
+                  </Col>
+                </Row>
+                <BootstrapTable
+                  {...props.baseProps}
+                  pagination={paginationFactory()}
+                />
+              </div>
+            )}
+          </ToolkitProvider>
+          {date} <br /> {time}
+          {/* BUAT NAMPILIN LOGGING */}
+          <Card style={{ width: "18rem" }}>
+            <Card.Body className="text-center">
+              <Card.Title>JUMLAH LOGGING</Card.Title>
+              <Card.Text>{props.HitungLogging}</Card.Text>
+            </Card.Body>
+          </Card>
+        </div>
       ) : (
         <div className="text-center">
           {props.errorLoggingList ? (
