@@ -3,6 +3,7 @@ import {
   GET_INVENTORY_DETAIL,
   POST_INVENTORY_CREATE,
   PUT_INVENTORY_EDIT,
+  PUT_LOGGING_EDIT,
   GET_LOGGING_LIST,
 } from "../actions/inventoryAction";
 
@@ -13,13 +14,10 @@ let initialState = {
   errorInventoryDetail: false,
   getResponDataInventory: false,
   errorResponDataInventory: false,
-  getUserLogin: localStorage.getItem("token") ? true : false,
-  errorUserLogin: false,
   getLoggingList: false,
   errorLoggingList: false,
   hitungLogging: false,
   title: "Pervasive",
-  judul: "apa hayu",
 };
 
 const inventorys = (state = initialState, action) => {
@@ -51,6 +49,13 @@ const inventorys = (state = initialState, action) => {
       };
 
     case PUT_INVENTORY_EDIT:
+      return {
+        ...state,
+        getResponDataInventory: action.payload.data,
+        errorResponDataInventory: action.payload.errorMessage,
+      };
+
+    case PUT_LOGGING_EDIT:
       return {
         ...state,
         getResponDataInventory: action.payload.data,

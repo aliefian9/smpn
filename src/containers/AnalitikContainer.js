@@ -2,12 +2,11 @@ import React, { Component } from "react";
 import { Redirect } from "react-router-dom";
 
 import { connect } from "react-redux";
-import { getLoggingList } from "../actions/inventoryAction";
+import { getLoggingList , getInventoryList } from "../actions/inventoryAction";
 
 import AnalitikComponent from "../components/AnalitikComponent";
-// import CounterAnalitik from "../components/CounterAnalitik";
 import NavbarComponent from "../components/NavbarComponent";
-// import PieChart from "../charts/PieChart";
+
 
 class AnalitikContainer extends Component {
   constructor(props) {
@@ -25,6 +24,7 @@ class AnalitikContainer extends Component {
   }
   componentDidMount() {
     this.props.dispatch(getLoggingList());
+    this.props.dispatch(getInventoryList());
   }
   render() {
     if (this.state.loggedin === false) {
@@ -34,7 +34,6 @@ class AnalitikContainer extends Component {
       <div>
         <NavbarComponent />
         <AnalitikComponent />
-        {/* <CounterAnalitik /> */}
       </div>
     );
   }

@@ -29,13 +29,13 @@ const NavbarComponent = (props) => {
           <Collapse isOpen={isOpen} navbar>
             <Nav className="mr-auto" navbar>
               <NavItem>
-                <NavLink href="/Home">Home</NavLink>
+                <NavLink href="/Logging">Logging</NavLink>
               </NavItem>
               <NavItem>
                 <NavLink href="/Analitik">Analitik</NavLink>
               </NavItem>
               <NavItem>
-                <NavLink href="/Data">Data</NavLink>
+                <NavLink href="/Inventory">Daftar Inventory</NavLink>
               </NavItem>
             </Nav>
             <NavbarText>
@@ -48,7 +48,7 @@ const NavbarComponent = (props) => {
                   <DropdownItem divider />
                   <DropdownItem>About</DropdownItem>
                   <DropdownItem divider />
-                  <DropdownItem href="/xhasjahw1">Logout</DropdownItem>
+                  <DropdownItem href="/Logout">Logout</DropdownItem>
                 </DropdownMenu>
               </UncontrolledDropdown>
             </NavbarText>
