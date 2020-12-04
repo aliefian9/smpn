@@ -3,10 +3,19 @@ import NavbarComponent from "../components/NavbarComponent";
 import { Redirect } from "react-router-dom";
 import React, { Component } from "react";
 import { Container } from "reactstrap";
+import { connect } from "react-redux";
 import FormLogging from "../components/FormLogging";
-import { putLoggingUpdate } from "../actions/inventoryAction";
+import { getLoggingDetail, putLoggingUpdate } from "../actions/inventoryAction";
+import swal from "sweetalert";
 
-class EditAnalitikContainer extends Component {
+const mapStateToProps = (state) => {
+  return {
+    getResponDataLogging: state.inventorys.getResponDataLogging,
+    errorResponDataLogging: state.inventorys.errorResponDataLogging,
+  };
+};
+
+class EditLoggingContainer extends Component {
   constructor(props) {
     super(props);
     const token = localStorage.getItem("token");
@@ -21,6 +30,10 @@ class EditAnalitikContainer extends Component {
     };
   }
 
+  componentDidMount() {
+    this.props.dispatch(getLoggingDetail(this.props.match.params.id));
+  }
+
   handleSubmit(data) {
     this.props.dispatch(putLoggingUpdate(data, this.props.match.params.id));
   }
@@ -29,7 +42,13 @@ class EditAnalitikContainer extends Component {
     if (this.state.loggedin === false) {
       return <Redirect to="/" />;
     }
-
+    if (this.props.getResponDataLogging || this.props.errorResponDataLogging) {
+      if (this.props.errorResponDataLogging) {
+        swal("Failed!", this.props.errorResponDataLogging, "error");
+      } else {
+        swal("Logging Updated!");
+      }
+    }
     return (
       <div>
         <NavbarComponent />
@@ -43,4 +62,4 @@ class EditAnalitikContainer extends Component {
   }
 }
 
-export default EditAnalitikContainer;
+export default connect(mapStateToProps, null)(EditLoggingContainer);

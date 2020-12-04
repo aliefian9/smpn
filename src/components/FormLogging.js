@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { reduxForm, Field } from "redux-form";
+import { connect } from "react-redux";
 import { FormGroup, Col, Label, Input, Row, Button } from "reactstrap";
 import InventoryValidation from "../validations/InventoryValidation";
 
@@ -33,6 +34,18 @@ const renderField = ({
   </Row>
 );
 
+const mapStateToProps = (state) => {
+  return {
+    initialValues: {
+      id: state.inventorys.getLoggingDetail.id,
+      warehouse: state.inventorys.getLoggingDetail.warehouse,
+      qty: state.inventorys.getLoggingDetail.qty,
+      status: state.inventorys.getLoggingDetail.status,
+      time: state.inventorys.getLoggingDetail.time,
+    },
+  };
+};
+
 class FormLogging extends Component {
   render() {
     return (
@@ -42,9 +55,20 @@ class FormLogging extends Component {
             <FormGroup>
               <Field
                 type="text"
-                name="logging.warehouse"
+                name="warehouse"
                 component={renderField}
                 label="Warehouse :"
+              />
+            </FormGroup>
+          </Col>
+
+          <Col md={6}>
+            <FormGroup>
+              <Field
+                type="text"
+                name="qty"
+                component={renderField}
+                label="Jumlah :"
               />
             </FormGroup>
           </Col>
@@ -68,9 +92,9 @@ class FormLogging extends Component {
   }
 }
 
-FormLogging = reduxForm({
+FormLogging  = reduxForm({
   form: "formCreateInventory",
   validate: InventoryValidation,
   enableReinitialize: true,
 })(FormLogging);
-export default FormLogging;
+export default connect(mapStateToProps, null)(FormLogging);

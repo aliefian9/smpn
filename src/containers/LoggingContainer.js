@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import { Redirect } from "react-router-dom";
 import NavbarComponent from "../components/NavbarComponent";
-import CounterLogging from "../components/CounterLogging";
+import LoggingComponent from "../components/LoggingComponent";
 import { getLoggingList } from "../actions/inventoryAction";
 
 class LoggingContainer extends Component {
@@ -29,7 +29,7 @@ class LoggingContainer extends Component {
     return (
       <div>
         <NavbarComponent />
-        <CounterLogging />
+        <LoggingComponent />
       </div>
     );
   }

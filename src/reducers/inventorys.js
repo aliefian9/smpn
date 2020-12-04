@@ -5,6 +5,7 @@ import {
   PUT_INVENTORY_EDIT,
   PUT_LOGGING_EDIT,
   GET_LOGGING_LIST,
+  GET_LOGGING_DETAIL,
 } from "../actions/inventoryAction";
 
 let initialState = {
@@ -17,6 +18,8 @@ let initialState = {
   getLoggingList: false,
   errorLoggingList: false,
   hitungLogging: false,
+  getLoggingDetail: false,
+  errorLoggingDetail: false,
   title: "Pervasive",
 };
 
@@ -58,8 +61,15 @@ const inventorys = (state = initialState, action) => {
     case PUT_LOGGING_EDIT:
       return {
         ...state,
-        getResponDataInventory: action.payload.data,
-        errorResponDataInventory: action.payload.errorMessage,
+        getResponDataLogging: action.payload.data,
+        errorResponDataLogging: action.payload.errorMessage,
+      };
+
+    case GET_LOGGING_DETAIL:
+      return {
+        ...state,
+        getLoggingDetail: action.payload.data,
+        errorLoggingDetail: action.payload.errorMessage,
       };
 
     default:

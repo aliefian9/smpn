@@ -4,7 +4,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import LoggingContainer from "./containers/LoggingContainer";
 import CreateInventoryContainer from "./containers/CreateInventoryContainer";
 import EditInventoryContainer from "./containers/EditInventoryContainer";
-import EditAnalitikContainer from "./containers/EditAnalitikContainer";
+import EditLoggingContainer from "./containers/EditLoggingContainer";
+import DetailLoggingContainer from "./containers/DetailLoggingContainer";
 import DetailInventoryContainer from "./containers/DetailInventoryContainer";
 import InventoryContainer from "./containers/InventoryContainer";
 import ProfilContainer from "./containers/ProfilContainer";
@@ -34,7 +35,8 @@ class App extends Component {
             <Route path="/Create" exact component={CreateInventoryContainer} />
             <Route path="/DetailInventory/:logical_uid" component={DetailInventoryContainer} />
             <Route path="/EditInventory/:logical_uid" exact component={EditInventoryContainer} />
-            <Route path="/EditAnalitik/:id" exact component={EditAnalitikContainer} />
+            <Route path="/EditLogging/:id" exact component={EditLoggingContainer} />
+            <Route path="/DetailLogging/:id" exact component={DetailLoggingContainer} />
             <Route path="/Inventory" exact component={InventoryContainer} />
             <Route path="/Analitik" exact component={AnalitikContainer} />
             <Route path="/Profil" exact component={ProfilContainer} />

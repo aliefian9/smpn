@@ -45,7 +45,7 @@ const defaultSorted = [
   },
 ];
 
-const CounterLogging = (props) => {
+const LoggingComponent = (props) => {
   const columns = [
     {
       dataField: "id",
@@ -79,13 +79,13 @@ const CounterLogging = (props) => {
       formatter: (rowContent, row) => {
         return (
           <div>
-            <Link to={"Detail/" + row.id}>
+            <Link to={"DetailLogging/" + row.id}>
               <Button color="dark" className="mr-2">
                 <FontAwesomeIcon icon={faInfo} /> Detail
               </Button>
             </Link>
 
-            <Link to={"EditAnalitik/" + row.id}>
+            <Link to={"EditLogging/" + row.id}>
               <Button color="dark" className="mr-2">
                 <FontAwesomeIcon icon={faEdit} /> Edit
               </Button>
@@ -159,4 +159,4 @@ const CounterLogging = (props) => {
   );
 };
 
-export default connect(mapStateToProps, null)(CounterLogging);
+export default connect(mapStateToProps, null)(LoggingComponent);

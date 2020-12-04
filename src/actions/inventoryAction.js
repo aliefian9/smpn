@@ -6,6 +6,7 @@ export const POST_INVENTORY_CREATE = "POST_INVENTORY_CREATE";
 export const PUT_INVENTORY_EDIT = "PUT_INVENTORY_EDIT";
 export const GET_LOGGING_LIST = "GET_LOGGING_LIST";
 export const PUT_LOGGING_EDIT = "PUT_LOGGING_EDIT";
+export const GET_LOGGING_DETAIL = "GET_LOGGING_DETAIL";
 
 let url = "https://smpnapi.herokuapp.com/api/v3/";
 let header = {
@@ -201,7 +202,7 @@ export const deleteLogging = (id) => {
 export const putLoggingUpdate = (data, id) => {
   return (dispatch) => {
     axios
-      .put(url + "logging/update/" +id,data, header
+      .put(url + "logging/update/" + id,data, header
       )
       .then(function (response) {
         console.log(response);
@@ -217,6 +218,33 @@ export const putLoggingUpdate = (data, id) => {
       .catch(function (error) {
         dispatch({
           type: PUT_LOGGING_EDIT,
+          payload: {
+            data: false,
+            errorMessage: error.message,
+          },
+        });
+      });
+  };
+};
+
+//BUAT DETAIL DATA 1 INVENTORY
+export const getLoggingDetail = (id) => {
+  return (dispatch) => {
+    axios
+      .get(url + "logging/detail/" + id, header)
+      .then(function (response) {
+        console.log(response);
+        dispatch({
+          type: GET_LOGGING_DETAIL,
+          payload: {
+            data: response.data,
+            errorMessage: false,
+          },
+        });
+      })
+      .catch(function (error) {
+        dispatch({
+          type: GET_LOGGING_DETAIL,
           payload: {
             data: false,
             errorMessage: error.message,
