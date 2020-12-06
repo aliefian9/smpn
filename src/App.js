@@ -54,6 +54,7 @@ class App extends Component {
           <Route path="/" exact component={LoginContainer} />
           <Route path="/Logging" exact component={LoggingContainer} />
           <Route path="/DetailInventory/:logical_uid" component={DetailInventoryContainer} />
+          <Route path="/DetailLogging/:id" exact component={DetailLoggingContainer} />
           <Route path="/Inventory" exact component={InventoryContainer} />
           <Route path="/Analitik" exact component={AnalitikContainer} />
           <Route path="/Logout" exact component={LogoutContainer} />
