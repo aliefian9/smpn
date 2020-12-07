@@ -40,6 +40,7 @@ const mapStateToProps = (state) => {
       logical_uid: state.inventorys.getInventoryDetail.logical_uid,
       name: state.inventorys.getInventoryDetail.name,
       qty: state.inventorys.getInventoryDetail.qty,
+      status: state.inventorys.getInventoryDetail.status,
     },
   };
 };

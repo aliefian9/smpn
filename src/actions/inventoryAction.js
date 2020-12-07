@@ -105,7 +105,7 @@ export const postInventoryCreate = (data) => {
         dispatch({
           type: POST_INVENTORY_CREATE,
           payload: {
-            data: response.data,
+            data: response.data.inventory,
             errorMessage: false,
           },
         });

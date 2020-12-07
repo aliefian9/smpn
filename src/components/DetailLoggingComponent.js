@@ -14,11 +14,6 @@ const DetailLoggingComponent = (props) => {
     <Table striped>
       <tbody>
         <tr>
-          <td width="200">Nama</td>
-          <td width="10">:</td>
-          <td>{props.getLoggingDetail.name}</td>
-        </tr>
-        <tr>
           <td width="200">Jumlah</td>
           <td width="10">:</td>
           <td>{props.getLoggingDetail.qty}</td>

@@ -52,7 +52,7 @@ const TableLoggingFullAccess = (props) => {
       text: "id",
       sort: true,
       headerStyle: () => {
-        return { width: "15%" };
+        return { width: "5%" };
       },
     },
     {
@@ -68,6 +68,11 @@ const TableLoggingFullAccess = (props) => {
     {
       dataField: "time",
       text: "Waktu",
+      sort: true,
+    },
+    {
+      dataField: "warehouse",
+      text: "Warehouse",
       sort: true,
     },
     {

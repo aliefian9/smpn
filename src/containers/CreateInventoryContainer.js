@@ -2,7 +2,7 @@ import React, { Component } from "react";
 import { Container } from "reactstrap";
 import { Redirect } from "react-router-dom";
 import BackComponent from "../components/BackComponent";
-import FormInventory from "../components/FormInventory";
+import FormCreate from "../components/FormCreate";
 import NavbarComponent from "../components/NavbarComponent";
 import { connect } from "react-redux";
 import { postInventoryCreate } from "../actions/inventoryAction";
@@ -44,9 +44,9 @@ class CreateInventoryContainer extends Component {
         swal(
           "Inventory Created!",
           "Nama : " +
-            this.props.getResponDataInventory.nama +
-            " , Umur : " +
-            this.props.getResponDataInventory.umur,
+            this.props.getResponDataInventory.name +
+            " , Jumlah : " +
+            this.props.getResponDataInventory.jumlah,
           "success"
         );
       }
@@ -60,7 +60,7 @@ class CreateInventoryContainer extends Component {
         <Container>
           <BackComponent />
           <h1>Create Inventory</h1>
-          <FormInventory onSubmit={(data) => this.handleSubmit(data)} />
+          <FormCreate onSubmit={(data) => this.handleSubmit(data)} />
         </Container>
       </div>
     );
